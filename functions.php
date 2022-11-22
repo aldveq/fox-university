@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package My_Site
+ * @package Fox_University
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -19,14 +19,14 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function my_site_setup() {
+function fox_university_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on Fox University, use a find and replace
-		* to change 'fox-u' to the name of your theme in all the template files.
+		* to change 'fox-university' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'fox-u', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'fox-university', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -49,7 +49,7 @@ function my_site_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'fox-u' ),
+			'menu-1' => esc_html__( 'Primary', 'fox-university' ),
 		)
 	);
 
@@ -74,7 +74,7 @@ function my_site_setup() {
 	add_theme_support(
 		'custom-background',
 		apply_filters(
-			'my_site_custom_background_args',
+			'fox_university_custom_background_args',
 			array(
 				'default-color' => 'ffffff',
 				'default-image' => '',
@@ -100,7 +100,7 @@ function my_site_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'my_site_setup' );
+add_action( 'after_setup_theme', 'fox_university_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -109,22 +109,22 @@ add_action( 'after_setup_theme', 'my_site_setup' );
  *
  * @global int $content_width
  */
-function my_site_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'my_site_content_width', 640 );
+function fox_university_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'fox_university_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'my_site_content_width', 0 );
+add_action( 'after_setup_theme', 'fox_university_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function my_site_widgets_init() {
+function fox_university_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'fox-u' ),
+			'name'          => esc_html__( 'Sidebar', 'fox-university' ),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'fox-u' ),
+			'description'   => esc_html__( 'Add widgets here.', 'fox-university' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -132,22 +132,22 @@ function my_site_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'my_site_widgets_init' );
+add_action( 'widgets_init', 'fox_university_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function my_site_scripts() {
-	wp_enqueue_style( 'fox-u-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'fox-u-style', 'rtl', 'replace' );
+function fox_university_scripts() {
+	wp_enqueue_style( 'fox-university-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'fox-university-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'fox-u-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'fox-university-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'my_site_scripts' );
+add_action( 'wp_enqueue_scripts', 'fox_university_scripts' );
 
 /**
  * Implement the Custom Header feature.

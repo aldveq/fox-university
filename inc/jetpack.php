@@ -33,7 +33,7 @@ function my_site_jetpack_setup() {
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'fox-u-style',
+				'stylesheet' => 'fox-university-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',
