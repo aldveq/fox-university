@@ -1,4 +1,4 @@
-import './sass/main.scss';
+import '../sass/style.scss';
 
 import NavBar from "./modules/NavBar";
 
