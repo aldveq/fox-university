@@ -23,6 +23,8 @@ class FOX_UNIVERSITY_THEME {
 		add_action( 'after_setup_theme', [$this, 'fox_university_setup'] );
 		add_action( 'after_setup_theme', [$this, 'fox_university_content_width'], 0 );
 		add_action( 'widgets_init', [$this, 'fox_university_widgets_init'] );
+		add_filter('nav_menu_css_class', [$this, 'add_additional_class_on_li'], 1, 3);
+		add_filter( 'nav_menu_link_attributes', [$this, 'add_specific_menu_location_atts'], 10, 3 );
 	}
 
 	/**
@@ -62,7 +64,7 @@ class FOX_UNIVERSITY_THEME {
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'fox-university' ),
+				'primary-menu' => esc_html__( 'Primary Menu', 'fox-university' ),
 			)
 		);
 
@@ -142,5 +144,21 @@ class FOX_UNIVERSITY_THEME {
 				'after_title'   => '</h2>',
 			)
 		);
+	}
+
+	public function add_additional_class_on_li($classes, $item, $args) {
+		if(isset($args->add_li_class)) {
+			$classes[] = $args->add_li_class;
+		}
+		return $classes;
+	}
+
+	public function add_specific_menu_location_atts( $atts, $item, $args ) {
+		// check if the item is in the primary menu
+		if( $args->theme_location == 'primary-menu' ) {
+			// add the desired attributes:
+			$atts['class'] = 'nav-link';
+		}
+		return $atts;
 	}
 }
