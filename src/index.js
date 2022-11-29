@@ -1,5 +1,5 @@
 import '../sass/style.scss';
 
-import NavBar from "./modules/NavBar";
+import MainScript from './modules/MainScript';
 
-NavBar();
+MainScript();
