@@ -9,6 +9,9 @@
  * @package My_Site
  */
 
+
+$utilities = \FOX_UNIVERSITY_THEME\Inc\UTILITIES::get_instance();
+$footer_nav_items = $utilities->get_menu_items_by_location('footer');
 ?>
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -57,11 +60,14 @@
             <div class="ftco-footer-widget mb-5 ml-md-4">
               <h2 class="ftco-heading-2">Links</h2>
               <ul class="list-unstyled">
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Deparments</a></li>
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
+			  	<?php
+					foreach ($footer_nav_items as $fn_item):
+						$fn_item_target = !empty( $fn_item->{'target'} ) ? $fn_item->{'target'} : '_self';
+						?>	
+							<li><a href="<?php echo esc_url( $fn_item->{'url'} );?>" target="<?php echo esc_attr( $fn_item_target );?>"><span class="ion-ios-arrow-round-forward mr-2"></span><?php echo esc_html( $fn_item->{'title'} );?></a></li>
+						<?php
+					endforeach;
+				?>
               </ul>
             </div>
           </div>

@@ -14,6 +14,7 @@ class FOX_UNIVERSITY_THEME {
 	protected function __construct() {
 		// Loading Classes
 		ASSETS::get_instance();
+		UTILITIES::get_instance();
 
 		// Actions & Filters
 		$this->setup_hooks();
@@ -65,6 +66,7 @@ class FOX_UNIVERSITY_THEME {
 		register_nav_menus(
 			array(
 				'primary-menu' => esc_html__( 'Primary Menu', 'fox-university' ),
+				'footer-menu' => esc_html__( 'Footer Menu', 'fox-university' ),
 			)
 		);
 
