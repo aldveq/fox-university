@@ -9,6 +9,15 @@
  * @package My_Site
  */
 
+// Global Email
+$first_primary_email_label = carbon_get_theme_option( 'ci_first_primary_email_label' );
+$primary_email = carbon_get_theme_option( 'ci_primary_email' );
+
+// Global Phone
+$first_primary_phone_label = carbon_get_theme_option( 'ci_first_primary_phone_label' );
+$second_primary_phone_label = carbon_get_theme_option( 'ci_second_primary_phone_label' );
+$primary_phone = carbon_get_theme_option( 'ci_primary_phone' );
+
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -29,24 +38,36 @@
 		<div class="container">
 			<div class="row no-gutters d-flex align-items-center align-items-stretch">
 				<div class="col-md-4 d-flex align-items-center py-4">
-					<a class="navbar-brand" href="index.html">Fox. <span>University</span></a>
+					<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">Fox. <span>University</span></a>
 				</div>
 				<div class="col-lg-8 d-block">
 					<div class="row d-flex">
-						<div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-							<div class="icon d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-							<div class="text">
-								<span>Email</span>
-								<span>youremail@email.com</span>
-							</div>
-						</div>
-						<div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-							<div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-							<div class="text">
-								<span>Call</span>
-								<span>Call Us: + 1235 2355 98</span>
-							</div>
-						</div>
+						<?php
+							if ( !empty( $first_primary_email_label ) && !empty( $primary_email ) ):
+								?>
+									<div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+										<div class="icon d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+										<div class="text">
+											<span><?php echo esc_html( $first_primary_email_label ); ?></span>
+											<a href="mailto:<?php echo esc_attr( $primary_email ); ?>"><?php echo esc_html( $primary_email ); ?></a>
+										</div>
+									</div>
+								<?php
+							endif;
+						?>
+						<?php
+							if ( !empty( $first_primary_phone_label ) && !empty( $second_primary_phone_label ) && !empty( $primary_phone ) ):
+								?>
+									<div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+										<div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+										<div class="text">
+											<span><?php echo esc_html( $first_primary_phone_label ); ?></span>
+											<a href="tel:<?php echo esc_attr( $primary_phone ); ?>"><?php echo esc_html( $second_primary_phone_label ); ?></a>
+										</div>
+									</div>
+								<?php
+							endif;
+						?>
 						<div class="col-md topper d-flex align-items-center justify-content-end">
 							<p class="mb-0">
 								<a href="#" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">

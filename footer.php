@@ -12,6 +12,20 @@
 
 $utilities = \FOX_UNIVERSITY_THEME\Inc\UTILITIES::get_instance();
 $footer_nav_items = $utilities->get_menu_items_by_location('footer');
+
+// Global Address
+$label_address = carbon_get_theme_option( 'ci_label_address' );
+$address_link = carbon_get_theme_option( 'ci_address_link' );
+
+// Global Secondary Phone
+$first_secondary_phone_label = carbon_get_theme_option('ci_first_secondary_phone_label');
+$second_secondary_phone_label = carbon_get_theme_option('ci_second_secondary_phone_label');
+$secondary_phone = carbon_get_theme_option('ci_secondary_phone');
+
+// Global Primary Email
+$second_primary_email_label = carbon_get_theme_option('ci_second_primary_email_label');
+$primary_email = carbon_get_theme_option('ci_primary_email');
+
 ?>
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -22,9 +36,41 @@ $footer_nav_items = $utilities->get_menu_items_by_location('footer');
             	<h2 class="ftco-heading-2">Have a Questions?</h2>
             	<div class="block-23 mb-3">
 	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	                <?php
+						if (!empty($label_address)):
+							if (!empty($address_link)):
+								?>
+									<li><span class="icon icon-map-marker"></span><a href="<?php echo esc_url( $address_link ); ?>" target="_blank" class="text"><?php echo esc_html($label_address); ?></a></li>
+								<?php
+							else:
+								?>
+									<li><span class="icon icon-map-marker"></span><span class="text"><?php echo esc_html($label_address); ?></span></li>
+								<?php
+							endif;
+						endif;
+					?>
+
+					<?php
+						if (!empty($secondary_phone)):
+							if (!empty($first_secondary_phone_label)):
+								?>
+	                				<li><a href="tel:<?php echo esc_attr( $secondary_phone );?>"><span class="icon icon-phone"></span><span class="text"><?php echo esc_html( $first_secondary_phone_label ); ?></span></a></li>
+								<?php
+							else:
+								?>
+									<li><a href="tel:<?php echo esc_attr( $secondary_phone );?>"><span class="icon icon-phone"></span><span class="text"><?php echo esc_html( $second_secondary_phone_label ); ?></span></a></li>
+								<?php
+							endif;
+						endif;
+					?>
+
+					<?php
+						if (!empty($second_primary_email_label) && !empty($primary_email)):
+							?>
+	                			<li><a href="mailto:<?php echo esc_attr( $primary_email ); ?>"><span class="icon icon-envelope"></span><span class="text"><?php echo esc_html($second_primary_email_label); ?></span></a></li>
+							<?php
+						endif;
+					?>
 	              </ul>
 	            </div>
             </div>
