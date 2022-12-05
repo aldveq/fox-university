@@ -54,6 +54,18 @@ class THEME_OPTIONS {
 				Field::make( 'text', 'ci_address_link', __( 'Address URL', 'fox-university' ) )
 					->set_width( 50 )
 					->help_text(__('Optional', 'fox-university')),
+			))
+			->add_tab( __( 'Socials', 'fox-university'), array(
+				Field::make('complex', 'socials_data', __('Socials', 'fox-university'))
+					->setup_labels( array(
+						'singular_name' => __( 'Social', 'fox-university' ),
+						'plural_name'   => __( 'Socials', 'fox-university' )
+					) )
+					->set_layout( 'tabbed-horizontal' )
+					->set_max( 5 )
+					->add_fields( array(
+						Field::make( 'text', 'social_url', __( 'URL', 'fox-university' ) )
+					) )
 			));
 		// Footer Settings
 		Container::make( 'theme_options', __('Footer', 'fox-university') )

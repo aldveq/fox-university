@@ -30,4 +30,17 @@ class UTILITIES {
 
 		return $footer_nav_items;
 	}
+
+	public function get_domain_name($url) {
+		$pieces = parse_url($url);
+		$domain = isset($pieces['host']) ? $pieces['host'] : '';
+
+		if(preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)){
+			$real_domain_name = explode('.', $regs['domain']);
+
+			return $real_domain_name[0];
+		}
+
+		return false;
+	}
 }

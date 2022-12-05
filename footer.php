@@ -26,6 +26,9 @@ $secondary_phone = carbon_get_theme_option('ci_secondary_phone');
 $second_primary_email_label = carbon_get_theme_option('ci_second_primary_email_label');
 $primary_email = carbon_get_theme_option('ci_primary_email');
 
+// Global Socials Data
+$socials_data = carbon_get_theme_option('socials_data');
+
 // Footer Copyright Text
 $footer_copyright_text = carbon_get_theme_option('footer_copyright_text');
 
@@ -130,14 +133,24 @@ $footer_copyright_text = carbon_get_theme_option('footer_copyright_text');
                 </div>
               </form>
             </div>
-            <div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2 mb-0">Connect With Us</h2>
-            	<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
+            <?php
+				if ( !empty($socials_data) && count($socials_data) ):
+					?>
+						<div class="ftco-footer-widget mb-5">
+							<h2 class="ftco-heading-2 mb-0">Connect With Us</h2>
+							<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+								<?php
+									foreach ($socials_data as $s_data):
+										?>
+											<li class="ftco-animate"><a href="<?php echo esc_url( $s_data['social_url'] ); ?>" target="_blank"><span class="icon-<?php echo esc_attr( $utilities->get_domain_name($s_data['social_url']) ); ?>"></span></a></li>
+										<?php
+									endforeach;
+								?>
+							</ul>
+						</div>
+					<?php
+				endif;
+			?>
           </div>
         </div>
         <?php

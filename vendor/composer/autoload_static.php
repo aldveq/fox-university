@@ -9,6 +9,7 @@ class ComposerStaticInit3bddaa0fb0c2fddc92ba39d300e18c51
     public static $files = array (
         '3937806105cc8e221b8fa8db5b70d2f2' => __DIR__ . '/..' . '/wp-cli/mustangostang-spyc/includes/functions.php',
         'be01b9b16925dcb22165c40b46681ac6' => __DIR__ . '/..' . '/wp-cli/php-cli-tools/lib/cli/cli.php',
+        '1db9a602f20508d50525f9dad168786f' => __DIR__ . '/..' . '/htmlburger/carbon-field-icon/core/bootstrap.php',
         'ffb465a494c3101218c4417180c2c9a2' => __DIR__ . '/..' . '/wp-cli/i18n-command/i18n-command.php',
     );
 
@@ -46,6 +47,7 @@ class ComposerStaticInit3bddaa0fb0c2fddc92ba39d300e18c51
         'C' => 
         array (
             'Carbon_Fields\\' => 14,
+            'Carbon_Field_Icon\\' => 18,
         ),
     );
 
@@ -89,6 +91,10 @@ class ComposerStaticInit3bddaa0fb0c2fddc92ba39d300e18c51
         'Carbon_Fields\\' => 
         array (
             0 => __DIR__ . '/..' . '/htmlburger/carbon-fields/core',
+        ),
+        'Carbon_Field_Icon\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/htmlburger/carbon-field-icon/core',
         ),
     );
 
