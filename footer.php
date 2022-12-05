@@ -26,6 +26,9 @@ $secondary_phone = carbon_get_theme_option('ci_secondary_phone');
 $second_primary_email_label = carbon_get_theme_option('ci_second_primary_email_label');
 $primary_email = carbon_get_theme_option('ci_primary_email');
 
+// Footer Copyright Text
+$footer_copyright_text = carbon_get_theme_option('footer_copyright_text');
+
 ?>
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -137,14 +140,20 @@ $primary_email = carbon_get_theme_option('ci_primary_email');
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-			</p>
-          </div>
-        </div>
+        <?php
+			if (!empty($footer_copyright_text)):
+				?>
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> <?php echo esc_html( $footer_copyright_text ); ?>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</p>
+						</div>
+					</div>
+				<?php
+			endif;
+		?>
       </div>
     </footer>
 

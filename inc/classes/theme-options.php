@@ -23,7 +23,8 @@ class THEME_OPTIONS {
 	}
 
 	public function crb_attach_theme_options() {
-		Container::make( 'theme_options', __( 'Theme Options' ) )
+		// Main Theme Options Settings
+		$main_theme_options_container = Container::make( 'theme_options', __( 'Theme Options', 'fox-university' ) )
 			->add_tab( __( 'Contact Information', 'fox-university' ), array(
 				Field::make( 'separator', 'separator_emails', __( 'Emails', 'fox-university' ) ),
 				Field::make( 'text', 'ci_first_primary_email_label', __( 'First Primary Email Label', 'fox-university' ) )
@@ -53,6 +54,12 @@ class THEME_OPTIONS {
 				Field::make( 'text', 'ci_address_link', __( 'Address URL', 'fox-university' ) )
 					->set_width( 50 )
 					->help_text(__('Optional', 'fox-university')),
+			));
+		// Footer Settings
+		Container::make( 'theme_options', __('Footer', 'fox-university') )
+			->set_page_parent($main_theme_options_container)
+			->add_fields(array(
+				Field::make( 'text', 'footer_copyright_text', __( 'Footer Copyright', 'fox-university' ) )
 			));
 	}
 }
