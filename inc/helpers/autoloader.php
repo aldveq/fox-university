@@ -52,7 +52,7 @@ function autoloader( $resource = '' ) {
 				break;
 			default:
 				$directory = 'classes';
-				$file_name = sprintf( '%s', trim( strtolower( $path[1] ) ) );
+				$file_name = sprintf( 'class-%s', trim( strtolower( $path[1] ) ) );
 				break;
 		}
 
