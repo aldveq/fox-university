@@ -17,6 +17,7 @@ class ASSETS {
 	}
 
 	protected function setup_hooks() {
+		add_action('enqueue_block_editor_assets', [$this, 'fox_university_editor_block_assets']);
 		add_action( 'wp_enqueue_scripts', [$this, 'fox_university_scripts'] );
 	}
 
@@ -46,5 +47,10 @@ class ASSETS {
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
+	}
+
+	public function fox_university_editor_block_assets() {
+		wp_enqueue_style('fox-university-block-editor-style-bundle', get_template_directory_uri() . '/build/style-index.css', array(), _S_VERSION);
+		wp_enqueue_style('university-animal-clinic-block-editor-styles', get_template_directory_uri() . '/editor/style.css', array(), _S_VERSION);
 	}
 }

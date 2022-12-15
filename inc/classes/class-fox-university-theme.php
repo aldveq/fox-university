@@ -16,6 +16,7 @@ class FOX_UNIVERSITY_THEME {
 		ASSETS::get_instance();
 		CARBON_FIELDS_SETUP::get_instance();
 		THEME_OPTIONS::get_instance();
+		CUSTOM_GUTENBERG_BLOCKS::get_instance();
 		UTILITIES::get_instance();
 
 		// Actions & Filters
@@ -72,6 +73,8 @@ class FOX_UNIVERSITY_THEME {
 			)
 		);
 
+		add_theme_support('align-wide');
+
 		/*
 			* Switch default core markup for search form, comment form, and comments
 			* to output valid HTML5.
@@ -118,6 +121,13 @@ class FOX_UNIVERSITY_THEME {
 				'flex-height' => true,
 			)
 		);
+
+		/**
+		 * Add support for custom image sizes
+		 *
+		 * @link https://codex.wordpress.org/Add_Image_Size
+		 */
+		 add_image_size( 'hero_slide_image_size', 1920, 600, ['center', 'top'] );
 	}
 
 	/**

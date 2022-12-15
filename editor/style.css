@@ -1,0 +1,20 @@
+/*Reseting Editor Styles - Start */
+.wp-block {
+	max-width: initial;
+}
+/*Reseting Editor Styles - End */
+
+/* Hero Slider Styles - Start */
+.owl-carousel.home-slider {
+	display: block;
+}
+
+.owl-carousel.home-slider .slider-item:not(:first-child) {
+	display: none;
+}
+
+.owl-carousel.home-slider .slider-item div.ftco-animate {
+	opacity: 1;
+	visibility: visible;
+}
+/* Hero Slider Styles - End */
