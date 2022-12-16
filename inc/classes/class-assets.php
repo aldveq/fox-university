@@ -40,7 +40,7 @@ class ASSETS {
 		wp_enqueue_script( 'fox-university-jquery-aos', get_template_directory_uri() . '/js/aos.js', array(), _S_VERSION, true );
 		wp_enqueue_script( 'fox-university-jquery-animate-number', get_template_directory_uri() . '/js/jquery.animateNumber.min.js', array('jquery'), _S_VERSION, true );
 		wp_enqueue_script( 'fox-university-scrollax', get_template_directory_uri() . '/js/scrollax.min.js', array(), _S_VERSION, true );
-		wp_enqueue_script( 'fox-university-main-script', get_template_directory_uri() . '/build/index.js', array(), _S_VERSION, true );
+		wp_enqueue_script( 'fox-university-main-script', get_template_directory_uri() . '/build/index.js', array('jquery'), _S_VERSION, true );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
