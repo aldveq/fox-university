@@ -36,6 +36,7 @@
     "map": false
   },
   "scripts": {
+	"build": "wp-scripts build",
 	"start": "wp-scripts start",
 	"start:hot": "wp-scripts start --hot",
 	"start:custom": "wp-scripts start entry-one.js entry-two.js --output-path=custom",
